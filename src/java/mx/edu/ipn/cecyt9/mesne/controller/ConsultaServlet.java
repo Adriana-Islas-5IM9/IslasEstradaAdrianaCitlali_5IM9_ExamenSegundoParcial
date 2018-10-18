@@ -41,10 +41,10 @@ public class ConsultaServlet extends HttpServlet {
         Registro reg = null;
         ArrayList<Registro> regs = new ArrayList();
 
-        final String INSERT = "select * from registro();";
+        final String INSERT = "select * from registro;";
 
         try {
-            con.query(INSERT);
+            res = con.query(INSERT);
             
             while (res.next()) {
                 reg = new Registro();
@@ -57,14 +57,16 @@ public class ConsultaServlet extends HttpServlet {
                 reg.setIdRegistro(res.getInt("idRegistro"));
                 
                 regs.add(reg);  
+                System.out.println("se encontraron los registros");
             }
             conex.close();
         } catch (Exception eee) {
             System.out.println("No se encontraron los registros");
         }
         
-        request.getServletContext().setAttribute("Registros", regs);
-        response.sendRedirect("JSP/Consulta.jsp");
+        request.setAttribute("regs", regs);
+        getServletContext().getRequestDispatcher("/JSP/Consulta.jsp").forward(request, response);
+
         
     }
 

@@ -107,7 +107,7 @@
                         <h5 class="center"></h5>
                         <p class="light"><%
                             if(request.getParameter("si")!=null){%>
-                               <c:out value="Sí hay registros"></c:out>
+                               <c:out value="Se hizo el registro"></c:out>
                             <%}%></p>
                     </div>
                 </div>

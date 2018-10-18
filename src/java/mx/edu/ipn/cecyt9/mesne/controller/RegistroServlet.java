@@ -61,16 +61,14 @@ public class RegistroServlet extends HttpServlet {
         String materia="";
         String deporte="";
 
-        final String INSERT = "insert into registro(nombre,materno,paterno,escuela,materia,deporte) values(?, ?,?,?,?,?);";
+        final String INSERT = "insert into registro(nombre,paterno,materno,escuela,materia,deporte) values(?, ?,?,?,?,?);";
 
         nombre = request.getParameter("nombre");
         materno = request.getParameter("materno");
-        materno = request.getParameter("paterno");
-        materno = request.getParameter("escuela");
-        materno = request.getParameter("materia");
-        materno = request.getParameter("deporte");
-        
-        
+        paterno = request.getParameter("paterno");
+        escuela = request.getParameter("escuela");
+        materia = request.getParameter("materia");
+        deporte = request.getParameter("deporte");
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -78,8 +76,8 @@ public class RegistroServlet extends HttpServlet {
         try {
             stmt = conex.prepareStatement(INSERT);
             stmt.setString(1, nombre);
-            stmt.setString(2, materno);
-            stmt.setString(3, paterno);
+            stmt.setString(2, paterno);
+            stmt.setString(3, materno);
             stmt.setString(4, escuela);
             stmt.setString(5, materia);
             stmt.setString(6, deporte);
@@ -87,11 +85,11 @@ public class RegistroServlet extends HttpServlet {
 
 
             if (stmt.executeUpdate() == 0) {
-                //algo paso
+                System.out.println("Algo no se hizo bien en el registro"); 
             }
             conex.close();
         } catch (Exception eee) {
-
+            System.out.println("error al realizar registro");
         }
         response.sendRedirect("JSP/Registro.jsp?si=yes");
     }

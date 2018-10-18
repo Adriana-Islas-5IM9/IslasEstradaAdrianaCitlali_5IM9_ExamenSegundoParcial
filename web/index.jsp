@@ -22,7 +22,10 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">PreExamen</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Registrarme</a></li>
+               <li><a href="JSP/Login.jsp">Iniciar sesión</a></li>
+                <li><a href="JSP/Registro.jsp">Registrarme</a></li>
+                <li><a href="JSP/Administrador.jsp">Administrador</a></li>
+                <li><a href="JSP/Consulta.jsp">Consulta de usuarios</a></li>
             </ul>
 
             <ul id="nav-mobile" class="sidenav">
